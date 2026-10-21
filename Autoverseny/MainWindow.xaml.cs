@@ -21,8 +21,13 @@ namespace Autoverseny
         private Random r = new Random();
         private List<Button> autok = new List<Button>();
 
-        private Dictionary<Button, int> rangsorDict = new Dictionary<Button, int>();
-
+        private Dictionary<string, int> rangsorDict = new Dictionary<string, int>()
+        {
+            { "ferrari", 0 },
+            { "lamborghini", 0 },
+            { "bugatti", 0 },
+            { "bmw", 0 }
+        };
         public MainWindow()
         {
             InitializeComponent();
@@ -34,15 +39,10 @@ namespace Autoverseny
             autok.Add(bugatti);
             autok.Add(bmw);
 
-            for (int i = 0; i < autok.Count; i++)
-            {
-                rangsorDict[autok[i]] = 0;
-            }
 
-            foreach (var auto in rangsorDict)
-            {
-                rangsor.ItemsSource = rangsorDict;
-            }
+            rangsor.ItemsSource = rangsorDict;
+            start.IsEnabled = true;
+            rangsor.Items.Refresh();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -65,6 +65,10 @@ namespace Autoverseny
                 timer.Stop();
                 MessageBox.Show($"{auto.Content} nyert!");
                 elozo_nyertes.Text = $"Előző nyertes: {auto.Content}";
+                start.IsEnabled = true;
+                rangsorDict[auto.Name] += 1;
+                rangsor.Items.Refresh();
+                rangsor.ItemsSource = rangsorDict;
             }
 
         }
@@ -76,6 +80,9 @@ namespace Autoverseny
                 Canvas.SetLeft(autok[i], 20);
             }
             timer.Start();
+
+            Button button = (Button)sender;
+            button.IsEnabled = false;
         }
     }
 }
