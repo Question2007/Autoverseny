@@ -23,10 +23,10 @@ namespace Autoverseny
 
         private Dictionary<string, int> rangsorDict = new Dictionary<string, int>()
         {
-            { "ferrari", 0 },
-            { "lamborghini", 0 },
-            { "bugatti", 0 },
-            { "bmw", 0 }
+            { "Ferrari", 0 },
+            { "Lamborghini", 0 },
+            { "Bugatti", 0 },
+            { "BMW", 0 }
         };
         public MainWindow()
         {
@@ -64,7 +64,7 @@ namespace Autoverseny
             {
                 timer.Stop();
                 MessageBox.Show($"{auto.Content} nyert!");
-                elozo_nyertes.Text = $"Előző nyertes: {auto.Content}";
+                elozo_nyertes.Text = $"Előző nyertes: {auto.Name}";
                 start.IsEnabled = true;
                 rangsorDict[auto.Name] += 1;
                 rangsor.Items.Refresh();
