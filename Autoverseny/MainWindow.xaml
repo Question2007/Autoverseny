@@ -31,21 +31,9 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <TextBlock x:Name="rangsor" Text="Rangsor: " FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,11,12,0" Foreground="White" Grid.RowSpan="2"/>
+        <TextBlock x:Name="rangsor_text" Text="" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Grid.Row="1" Margin="0,11,11,0"/>
         <TextBlock x:Name="elozo_nyertes" Text="Előző nyertes: " FontSize="20" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="White"/>
-        <ListBox x:Name="rangsor" FontSize="12" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="White">
-            <ListBox.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FF3B157E" Offset="1"/>
-                </LinearGradientBrush>
-            </ListBox.Background>
-            <ListBox.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </ListBox.BorderBrush>
-        </ListBox>
         <Canvas x:Name="palya" Background="#FFA7A3A3" Grid.Row="4">
             <Button x:Name="ferrari" FontWeight="Bold" Content="Ferrari" Width="90" Height="36" Background="Red"
                     Canvas.Left="20" Canvas.Top="50" Foreground="White"/>

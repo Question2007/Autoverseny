@@ -23,10 +23,10 @@ namespace Autoverseny
 
         private Dictionary<string, int> rangsorDict = new Dictionary<string, int>()
         {
-            { "Ferrari", 0 },
-            { "Lamborghini", 0 },
-            { "Bugatti", 0 },
-            { "BMW", 0 }
+            { "ferrari", 0 },
+            { "lamborghini", 0 },
+            { "bugatti", 0 },
+            { "bmw", 0 }
         };
         public MainWindow()
         {
@@ -39,10 +39,13 @@ namespace Autoverseny
             autok.Add(bugatti);
             autok.Add(bmw);
 
+            //rangsor_text.Text = "Rangsor: \n";
 
-            rangsor.ItemsSource = rangsorDict;
-            start.IsEnabled = true;
-            rangsor.Items.Refresh();
+            foreach (KeyValuePair<string, int> p in rangsorDict)
+            {
+
+                rangsor_text.Text += p.Key + ": " + p.Value + "\n";
+            }
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -66,9 +69,13 @@ namespace Autoverseny
                 MessageBox.Show($"{auto.Content} nyert!");
                 elozo_nyertes.Text = $"Előző nyertes: {auto.Name}";
                 start.IsEnabled = true;
-                rangsorDict[auto.Name] += 1;
-                rangsor.Items.Refresh();
-                rangsor.ItemsSource = rangsorDict;
+                rangsorDict[auto.Name.ToLower()] += 1;
+                rangsor_text.Text = "";
+                foreach (KeyValuePair<string, int> p in rangsorDict)
+                {
+
+                    rangsor_text.Text += p.Key + ": " + p.Value + "\n";
+                }
             }
 
         }
